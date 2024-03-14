@@ -1,0 +1,168 @@
+# Activation du module de réécriture d'URL :
+RewriteEngine on
+# RewriteBase "/.../"
+
+#--------------------------------------------------
+# ROUTES
+#--------------------------------------------------
+
+# ROUTE FORMULAIRE DE CONNEXION
+# PATTERN: /users/login/form
+# TARGET: ?users=loginForm
+RewriteRule ^users\/login\/form$ index.php?users=loginForm [L]
+
+# ROUTE DE CONNEXION
+# PATTERN: /users/login
+# TARGET: ?users=login
+RewriteRule ^users\/login$ index.php?users=login [L]
+
+# ROUTE LISTE DES RECETTES
+# PATTERN: /recipes
+# TARGET: ?recipes=index
+RewriteRule ^recipes$ index.php?recipes=index [L]
+
+# ROUTE DÉTAILS D'UNE RECETTE
+# PATTERN: /recipes/{id}/{slug}
+# TARGET: ?recipes=show&id=x
+RewriteRule ^recipes\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)*[a-z0-9]$ index.php?recipes=show&id=$1 [L]
+
+
+# ROUTE LISTE DES CHEFS
+# PATTERN: /chiefs
+# TARGET: ?chiefs=index
+RewriteRule ^chiefs$ index.php?chiefs=index [L]
+
+# ROUTE DÉTAILS D'UN CHEF
+# PATTERN: /chiefs/{id}/{lastname}{firstname}
+# TARGET: ?chiefs=show&id=x
+RewriteRule ^chiefs\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)*[a-z0-9]$ index.php?chiefs=show&id=$1 [L]
+
+# ROUTE PAR DEFAUT
+# PATTERN: /home
+# TARGET: ?home=index
+RewriteRule ^home$ index.php [L]
+
+#--------------------------------------------------
+# ROUTES
+#--------------------------------------------------
+# ROUTE DE LOGOUT
+# PATTERN: /users/logout
+# TARGET: ?users=logout
+RewriteRule ^users\/logout$ index.php?users=logout [L]
+
+#--------------------------------------------------
+# ROUTES
+#--------------------------------------------------
+# ROUTE DES CATEGORIES
+# PATTERN: /categories
+# TARGET: ?categories=index
+RewriteRule ^categories$ index.php?categories=index [L]
+
+# PATTERN: /categories/add
+# TARGET: ?categories=add
+RewriteRule ^categories\/add$ index.php?categories=add [L]
+
+# PATTERN: /categories/add/form
+# TARGET: ?categories=addForm
+RewriteRule ^categories\/add\/form$ index.php?categories=addForm [L]
+
+# PATTERN: /categories/edit
+# TARGET: ?categories=edit
+RewriteRule ^categories\/edit\/([1-9][0-9]*)$ index.php?categories=edit&id=$1 [L]
+
+# PATTERN: /categories/edit/form
+# TARGET: ?categories=editForm
+RewriteRule ^categories\/edit\/form$ index.php?categories=editForm [L]
+
+# PATTERN: /categories/delete
+# TARGET: ?categories=delete
+RewriteRule ^categories\/delete\/([1-9][0-9]*)$ index.php?categories=delete&id=$1 [L]
+
+#--------------------------------------------------
+# ROUTES
+#--------------------------------------------------
+# ROUTE DES INGREDIENTS
+# PATTERN: /ingredients
+# TARGET: ?ingredients=index
+RewriteRule ^ingredients$ index.php?ingredients=index [L]
+
+# PATTERN: /ingredients/add
+# TARGET: ?ingredients=add
+RewriteRule ^ingredients\/add$ index.php?ingredients=add [L]
+
+# PATTERN: /ingredients/add/form
+# TARGET: ?ingredients=addForm
+RewriteRule ^ingredients\/add\/form$ index.php?ingredients=addForm [L]
+
+# PATTERN: /ingredients/edit
+# TARGET: ?ingredients=edit
+RewriteRule ^ingredients\/edit\/([1-9][0-9]*)$ index.php?ingredients=edit&id=$1 [L]
+
+# PATTERN: /ingredients/edit/form
+# TARGET: ?ingredients=editForm
+RewriteRule ^ingredients\/edit\/form$ index.php?ingredients=editForm [L]
+
+# PATTERN: /ingredients/delete
+# TARGET: ?ingredients=delete
+RewriteRule ^ingredients\/delete\/([1-9][0-9]*)$ index.php?ingredients=delete&id=$1 [L]
+
+#--------------------------------------------------
+# ROUTES
+#--------------------------------------------------
+# ROUTE DES USERS
+# PATTERN: /users
+# TARGET: ?users=index
+RewriteRule ^users$ index.php?users=index [L]
+
+# PATTERN: /users/add
+# TARGET: ?users=add
+RewriteRule ^users\/add$ index.php?users=add [L]
+
+# PATTERN: /users/add/form
+# TARGET: ?users=addForm
+RewriteRule ^users\/add\/form$ index.php?users=addForm [L]
+
+# PATTERN: /users/edit
+# TARGET: ?users=edit
+RewriteRule ^users\/edit\/([1-9][0-9]*)$ index.php?users=edit&id=$1 [L]
+
+# PATTERN: /users/edit/form
+# TARGET: ?users=editForm
+RewriteRule ^users\/edit\/form$ index.php?users=editForm [L]
+
+# PATTERN: /users/delete
+# TARGET: ?users=delete
+RewriteRule ^users\/delete\/([1-9][0-9]*)$ index.php?users=delete&id=$1 [L]
+
+#--------------------------------------------------
+# ROUTES
+#--------------------------------------------------
+# ROUTE DES RECETTES
+# PATTERN: /recipes
+# TARGET: ?recipes=index
+RewriteRule ^recipes$ index.php?recipes=index [L]
+
+# PATTERN: /recipes/add
+# TARGET: ?recipes=add
+RewriteRule ^recipes\/add$ index.php?recipes=add [L]
+
+# PATTERN: /recipes/add/form
+# TARGET: ?recipes=addForm
+RewriteRule ^recipes\/add\/form$ index.php?recipes=addForm [L]
+
+# PATTERN: /recipes/edit
+# TARGET: ?recipes=edit
+RewriteRule ^recipes\/edit\/([1-9][0-9]*)$ index.php?recipes=edit&id=$1 [L]
+
+# PATTERN: /recipes/edit/form
+# TARGET: ?recipes=editForm
+RewriteRule ^recipes\/edit\/form$ index.php?recipes=editForm [L]
+
+# PATTERN: /recipes/delete
+# TARGET: ?recipes=delete
+RewriteRule ^recipes\/delete\/([1-9][0-9]*)$ index.php?recipes=delete&id=$1 [L]
+
+
+# --------------------------------------------------
+RewriteCond %{REQUEST_URI} !\.(js|css|jpg|gif|zip|png|pdf)$ [NC]
+RewriteRule ^(.*)$ index.php [L]

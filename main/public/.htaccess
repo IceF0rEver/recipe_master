@@ -1,0 +1,56 @@
+# Activation du module de réécriture d'URL :
+RewriteEngine on
+# RewriteBase "/.../"
+
+#--------------------------------------------------
+# ROUTES
+#--------------------------------------------------
+
+# ROUTE FORMULAIRE DE CONNEXION
+# PATTERN: /users/login/form
+# TARGET: ?users=loginForm
+RewriteRule ^users\/login\/form$ index.php?users=loginForm [L]
+
+# ROUTE DE CONNEXION
+# PATTERN: /users/login
+# TARGET: ?users=login
+RewriteRule ^users\/login$ index.php?users=login [L]
+
+# ROUTE LISTE DES RECETTES
+# PATTERN: /recipes
+# TARGET: ?recipes=index
+RewriteRule ^recipes$ index.php?recipes=index [L]
+
+# ROUTE DÉTAILS D'UNE RECETTE
+# PATTERN: /recipes/{id}/{slug}
+# TARGET: ?recipes=show&id=x
+RewriteRule ^recipes\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)*[a-z0-9]$ index.php?recipes=show&id=$1 [L]
+
+
+# ROUTE LISTE DES CHEFS
+# PATTERN: /chiefs
+# TARGET: ?chiefs=index
+RewriteRule ^chiefs$ index.php?chiefs=index [L]
+
+# ROUTE DÉTAILS D'UN CHEF
+# PATTERN: /chiefs/{id}/{lastname}-{firstname}
+# TARGET: ?chiefs=show&id=x
+RewriteRule ^chiefs\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)*[a-z0-9]$ index.php?chiefs=show&id=$1 [L]
+
+# ROUTE PAR DEFAUT
+# PATTERN: /home
+# TARGET: ?home=index
+RewriteRule ^home$ index.php [L]
+
+#--------------------------------------------------
+# ROUTES
+#--------------------------------------------------
+# ROUTE DE LOGOUT
+# PATTERN: /users/logout
+# TARGET: ?users=logout
+RewriteRule ^users\/logout$ index.php?users=logout [L]
+
+
+# --------------------------------------------------
+RewriteCond %{REQUEST_URI} !\.(js|css|jpg|gif|zip|png|pdf)$ [NC]
+RewriteRule ^(.*)$ index.php [L]
